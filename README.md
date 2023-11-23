@@ -15,7 +15,7 @@ HOROVOD_WITH_PYTORCH=1 pip install horovod[pytorch]
 ```
 
 
-###Prepare Dataset
+### Prepare Dataset
 Download the Imagenet-100 from the links:
 https://drive.google.com/drive/folders/1DXhYUMvOmD7AjxGsGiUE5kYNa7t8tgPH?usp=sharing
 UnZip and Move all downloaded folders into the `./dataset`
