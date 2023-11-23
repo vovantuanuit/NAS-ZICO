@@ -15,43 +15,32 @@ HOROVOD_WITH_PYTORCH=1 pip install horovod[pytorch]
 ```
 
 
-Prepare Dataset
-```
+###Prepare Dataset
 Download the Imagenet-100 from the links:
 https://drive.google.com/drive/folders/1DXhYUMvOmD7AjxGsGiUE5kYNa7t8tgPH?usp=sharing
 UnZip and Move all downloaded folders into the `./dataset`
-```
 
-Params-based searching for and train ImageNet models, with FLOPs budget 450M:
+### ZeroCostProxy-based searching for and train ImageNet100 models, with FLOPs budget 450M
+
 ``` bash
-scripts/Params_NAS_ImageNet_flops450M
+scripts/ZiCo_NAS_ImageNet_flops450M.sh
 ```
+noted: Change the '--zero_shot_score', example: zico, zico_from_layer_3
 
-Download the checkpoints from the Anonymous google drive links:
+Download the checkpoints from the links:
 https://drive.google.com/drive/folders/1DXhYUMvOmD7AjxGsGiUE5kYNa7t8tgPH?usp=sharing
 Move all downloaded folders into the `./save_dir`
-Evaluate the checkpoints ZiCo-based pretrained models, with FLOPs budget from 450M to 1G:
+
+Evaluate the checkpoints ZeroCostProxy-based pretrained models, with FLOPs budget 450M:
 ``` bash
-python val.py --fp16 --gpu 0 --arch ZiCo_imagenet1k_flops450M_res224 --ckpt_path=./save_dir/ZiCo_NAS_ImageNet_flops450M/student_best-params_rank0.pth --data=$PATH_TO_IMAGENET
-python val.py --fp16 --gpu 0 --arch ZiCo_imagenet1k_flops600M_res224 --ckpt_path=./save_dir/ZiCo_NAS_ImageNet_flops600M/student_best-params_rank0.pth --data=$PATH_TO_IMAGENET
-python val.py --fp16 --gpu 0 --arch ZiCo_imagenet1k_flops1G_res224 --ckpt_path=./save_dir/ZiCo_NAS_ImageNet_flops1G/student_best-params_rank0.pth --data=$PATH_TO_IMAGENET
+python val.py --fp16 --gpu 0 --arch ZiCo_imagenet1k_flops450M_res224_base --ckpt_path=./save_dir/ZiCo_NAS_ImageNet_flops450M_base/student_best-params_rank0.pth --data=$PATH_TO_IMAGENET
+python val.py --fp16 --gpu 0 --arch ZiCo_imagenet1k_flops450M_res224_from_layer4 --ckpt_path=./save_dir/ZiCo_NAS_ImageNet_flops450M_from_layer4/student_best-params_rank0.pth --data=$PATH_TO_IMAGENET
+python val.py --fp16 --gpu 0 --arch Synflow_imagenet1k_flops450M_res224_base --ckpt_path=./save_dir/Synflow_NAS_ImageNet_flops450M_base/student_best-params_rank0.pth --data=$PATH_TO_IMAGENET
+python val.py --fp16 --gpu 0 --arch Synflow_imagenet1k_flops450M_res224_from_layer3 --ckpt_path=./save_dir/Synflow_NAS_ImageNet_flops450M_from_layer3/student_best-params_rank0.pth --data=$PATH_TO_IMAGENET
+python val.py --fp16 --gpu 0 --arch Grad_imagenet1k_flops450M_res224_base --ckpt_path=./save_dir/Grad_NAS_ImageNet_flops450M_base/student_best-params_rank0.pth --data=$PATH_TO_IMAGENET
+python val.py --fp16 --gpu 0 --arch Grad_imagenet1k_flops450M_res224_from_layer2 --ckpt_path=./save_dir/Grad_NAS_ImageNet_flops450M_from_layer2/student_best-params_rank0.pth --data=$PATH_TO_IMAGENET
 ```
 
-Evaluate the checkpoints Params-based pretrained models, with FLOPs budget 450M:
-``` bash
-python val.py --fp16 --gpu 0 --arch Params_imagenet1k_flops450M_res224 --ckpt_path=./save_dir/Param_imagenet1k_flops450M_res224/student_best-params_rank0.pth --data=$PATH_TO_IMAGENET
-```
 
-The code is modified on `https://github.com/idstcv/ZenNAS`
+The code is modified on `https://github.com/SLDGroup/ZiCo`
 
-if you find our code useful, please consider citing our paper:
-```
-@inproceedings{
-li2023zico,
-title={ZiCo: Zero-shot {NAS} via inverse Coefficient of Variation on Gradients},
-author={Guihong Li and Yuedong Yang and Kartikeya Bhardwaj and Radu Marculescu},
-booktitle={The Eleventh International Conference on Learning Representations },
-year={2023},
-url={https://openreview.net/forum?id=rwo-ls5GqGn}
-}
-```
