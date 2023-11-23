@@ -28,7 +28,7 @@ scripts/ZiCo_NAS_ImageNet_flops450M.sh
 noted: Change the '--zero_shot_score', example: zico, zico_from_layer_3
 
 Download the checkpoints from the links:
-https://drive.google.com/drive/folders/1DXhYUMvOmD7AjxGsGiUE5kYNa7t8tgPH?usp=sharing
+https://sutdapac-my.sharepoint.com/:u:/g/personal/vovan_tuan_sutd_edu_sg/EWr0aqven9lMhukSqx9wFPIB4-lkB314-48fbZDR8Heq4g?e=m9OBD5
 Move all downloaded folders into the `./save_dir`
 
 ### Evaluate the checkpoints ZeroCostProxy-based pretrained models, with FLOPs budget 450M:
