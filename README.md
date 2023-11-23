@@ -18,6 +18,7 @@ HOROVOD_WITH_PYTORCH=1 pip install horovod[pytorch]
 ### Prepare Dataset
 Download the Imagenet-100 from the links:
 https://sutdapac-my.sharepoint.com/:u:/g/personal/vovan_tuan_sutd_edu_sg/EaWA3oLM575Nv_0mXoL7vlYBlhJ5IZvGc1YbjIjkavovUg?e=e5v6HM
+
 UnZip and Move all downloaded folders into the `./dataset`
 
 ### ZeroCostProxy-based searching for and train ImageNet100 models, with FLOPs budget 450M
