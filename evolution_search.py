@@ -17,7 +17,7 @@ import PlainNet
 from xautodl import datasets
 import time
 
-from ZeroShotProxy import compute_zen_score, compute_te_nas_score, compute_syncflow_score, compute_gradnorm_score, compute_NASWOT_score, compute_zico, compute_zico_from_layer3, compute_gradnorm_score_from_layer1, compute_syncflow_score_from_layer2
+from ZeroShotProxy import compute_gradnorm_score_from_layer2, compute_syncflow_score_from_layer3, compute_zen_score, compute_te_nas_score, compute_syncflow_score, compute_gradnorm_score, compute_NASWOT_score, compute_zico, compute_zico_from_layer4
 # import network_latency
 
 working_dir = os.path.dirname(os.path.abspath(__file__))
@@ -125,8 +125,8 @@ def compute_nas_score(AnyPlainNet, random_structure_str, gpu, args, trainloader=
     if args.zero_shot_score.lower() == 'zico':
         the_nas_core = compute_zico.getzico(the_model, trainloader,lossfunc)
     
-    elif args.zero_shot_score.lower() == 'zico_from_layer_3':
-        the_nas_core = compute_zico_from_layer3.getzico(the_model, trainloader,lossfunc)
+    elif args.zero_shot_score.lower() == 'zico_from_layer_4':
+        the_nas_core = compute_zico_from_layer4.getzico(the_model, trainloader,lossfunc)
 
     elif args.zero_shot_score == 'Zen':
         the_nas_core_info = compute_zen_score.compute_nas_score(model=the_model, gpu=gpu,
@@ -144,8 +144,8 @@ def compute_nas_score(AnyPlainNet, random_structure_str, gpu, args, trainloader=
                                                                     resolution=args.input_image_size,
                                                                     batch_size=args.batch_size)
         
-    elif args.zero_shot_score == 'Syncflow_from_layer2':
-        the_nas_core = compute_syncflow_score_from_layer2.do_compute_nas_score(model=the_model, gpu=gpu,
+    elif args.zero_shot_score == 'Syncflow_from_layer3':
+        the_nas_core = compute_syncflow_score_from_layer3.do_compute_nas_score(model=the_model, gpu=gpu,
                                                                     resolution=args.input_image_size,
                                                                     batch_size=args.batch_size)
 
@@ -154,8 +154,8 @@ def compute_nas_score(AnyPlainNet, random_structure_str, gpu, args, trainloader=
                                                                 resolution=args.input_image_size,
                                                                 batch_size=args.batch_size)
         
-    elif args.zero_shot_score == 'GradNorm_from_layer1':
-        the_nas_core = compute_gradnorm_score_from_layer1.compute_nas_score(model=the_model, gpu=gpu,
+    elif args.zero_shot_score == 'GradNorm_from_layer2':
+        the_nas_core = compute_gradnorm_score_from_layer2.compute_nas_score(model=the_model, gpu=gpu,
                                                                 resolution=args.input_image_size,
                                                                 batch_size=args.batch_size)
 
