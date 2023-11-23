@@ -1,5 +1,3 @@
-Official code for 'ZiCo: Zero-shot NAS via Inverse Coefficient of Variation on Gradients' (ICLR 2023 Spotlight) [Paper link](https://openreview.net/forum?id=rwo-ls5GqGn)
-
 
 <div align="center">
     <a href="./">
@@ -17,11 +15,11 @@ HOROVOD_WITH_PYTORCH=1 pip install horovod[pytorch]
 ```
 
 
-ZiCo-based searching for and train ImageNet models, with FLOPs budget from 450M to 1G:
-``` bash
-scripts/ZiCo_NAS_ImageNet_flops450M.sh
-scripts/ZiCo_NAS_ImageNet_flops600M.sh
-scripts/ZiCo_NAS_ImageNet_flops1G.sh
+Prepare Dataset
+```
+Download the Imagenet-100 from the links:
+https://drive.google.com/drive/folders/1DXhYUMvOmD7AjxGsGiUE5kYNa7t8tgPH?usp=sharing
+UnZip and Move all downloaded folders into the `./dataset`
 ```
 
 Params-based searching for and train ImageNet models, with FLOPs budget 450M:
