@@ -31,7 +31,7 @@ Download the checkpoints from the links:
 https://drive.google.com/drive/folders/1DXhYUMvOmD7AjxGsGiUE5kYNa7t8tgPH?usp=sharing
 Move all downloaded folders into the `./save_dir`
 
-Evaluate the checkpoints ZeroCostProxy-based pretrained models, with FLOPs budget 450M:
+### Evaluate the checkpoints ZeroCostProxy-based pretrained models, with FLOPs budget 450M:
 ``` bash
 python val.py --fp16 --gpu 0 --arch ZiCo_imagenet1k_flops450M_res224_base --ckpt_path=./save_dir/ZiCo_NAS_ImageNet_flops450M_base/student_best-params_rank0.pth --data=$PATH_TO_IMAGENET
 python val.py --fp16 --gpu 0 --arch ZiCo_imagenet1k_flops450M_res224_from_layer4 --ckpt_path=./save_dir/ZiCo_NAS_ImageNet_flops450M_from_layer4/student_best-params_rank0.pth --data=$PATH_TO_IMAGENET
